@@ -1,132 +1,144 @@
-import React from 'react'
-import { useState,useEffect } from 'react'
+import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Signup.css"
-import axios from "axios"
-import Navbar from "./../../components/Navbar/Navbar"
+import "./Signup.css";
+import axios from "axios";
+import Navbar from "./../../components/Navbar/Navbar";
 
 function Signup() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("");
 
-    const[name ,setName]=useState("");
-    const[email,setEmail]=useState('');
-    const[password ,setPassword]=useState('');
-    const[mobile,setMobile]=useState("");
-    const[address,setAddress]=useState("");
+  useEffect(() => {
+    const store = JSON.parse(localStorage.getItem("user" || "{}"));
+    if (store?.name) {
+      alert(" you already signup ");
+      window.location.href = "/";
+    }
+  }, []);
 
+  const signupHere = async () => {
+    try {
+      const response = await axios.post("/api/v1/signups", {
+        name: name,
+        email: email,
+        password: password,
+        mobile: mobile,
+        address: address,
+      });
 
-    useEffect(()=>{
-      const store = JSON.parse(localStorage.getItem("user" || "{}"));
-      if(store?.name){
-          alert(" you already signup ");
-          window.location.href="/"
+      if (response?.data?.success) {
+        alert(response?.data?.message);
+        localStorage.setItem("user", JSON.stringify(response?.data?.data));
+        window.location.href = "/login";
+      } else {
+        alert(response?.data?.message);
       }
-  },[]);
+      console.log(response);
 
-    const Signup = async()=>{
-      try{
+      setName("");
+      setEmail("");
+      setPassword("");
+      setAddress("");
+      setMobile("");
+    } catch (e) {
+      console.log("Not working");
+      alert("Not working");
+    }
+  };
 
-          const response =  await axios.post('/signup',{
-              name:name,
-              email:email,
-              password:password,
-              mobile:mobile,
-              address:address,
-          });
-  
-
-          
-          if(response?.data?.success){
-              alert(response?.data?.message)
-          }else{
-              alert(response?.data?.message)
-          }
-          console.log(response)
-
-          setName("")
-          setEmail("")
-          setPassword("")
-          setAddress("")
-          setMobile("")
-      }catch(e){
-          console.log("not working")
-          alert("nt working")
-      }
-}
   return (
     <div>
-      <Navbar/>
+      <Navbar />
+      <form className=" form-controls mx-auto  " action="">
+        <p className="title">SignUp</p>
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Name
+          </label>
+        </div>
 
-          <form className=" form-container">
-                    <h3 className="text-center"> Registration Form</h3>
-                <div>
-                    {/* <label className="label-field"> Name</label><br/> */}
-                    <input placeholder="name" 
-                    value={name} 
-                    onChange={(e)=>{
-                        setName(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="text"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Email
+          </label>
+        </div>
 
-                <div>
-                    {/* <label className="label-field"> Email</label><br/> */}
-                    <input type="text" placeholder="enter your email" 
-                    value={email} 
-                    onChange={(e)=>{
-                        setEmail(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
-                <div>
-                    {/* <label className="label-field"> password</label><br/> */}
-                    <input type="password" placeholder="enter your current-password" 
-                    value={password} 
-                    onChange={(e)=>{
-                        setPassword(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
-                <div>
-                    {/* <label className="label-field"> Mobile</label><br/> */}
-                    <input type="number" placeholder="enter your mobile number" 
-                    value={mobile} 
-                    onChange={(e)=>{
-                        setMobile(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
-                <div>
-                    {/* <label className="label-field"> Address</label><br/> */}
-                    <input
-                    type="text"
-                    placeholder="enetr your Addrress" 
-                    value={address} 
-                    onChange={(e)=>{
-                        setAddress(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Password
+          </label>
+        </div>
 
-                <button
-                type="button"
-                 className="btn"
-                 onClick={Signup}
-                 
-                 > Signup</button>
-                   
-                 <p> <Link to="/login" className="sign-link"> already you have an account?</Link></p>
-           </form>
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="number"
+            value={mobile}
+            onChange={(e) => {
+              setMobile(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Mobile
+          </label>
+        </div>
 
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="text"
+            value={address}
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Address
+          </label>
+        </div>
 
-
-
+        <Link to="/login" className="no-underline text-blue-600">
+          You have already account Login here !
+        </Link>
+        <button className="signup-btn bg-red-600" onClick={signupHere}>
+          Signup
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
