@@ -1,0 +1,46 @@
+.form-container{
+    margin-top: 50px;
+    height: 480px;
+    width: 400px;
+    padding: 15px 20px;
+    margin: 40px auto;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.inputfields{
+  
+    font-size: 20px;
+    padding: 5px;
+    width: 300px;
+    border-radius: 10px;
+    display: block;
+    margin: 10px auto;
+}
+.label-field{
+    font-size: 25px;
+    color: aliceblue;
+}
+.text-center{
+    text-align: center;
+    color: rgb(29, 30, 30);
+}
+.btn{
+    font-size: 20px;
+    width: 110px;
+    background-color: blue;
+    color: aliceblue;
+  
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.sign-link{
+    text-decoration: none;
+   margin-left: 50px;
+   font-size: 18px;
+}
