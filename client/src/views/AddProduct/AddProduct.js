@@ -5,8 +5,8 @@ function AddProduct() {
   return (
     <>
     <Navbar/>
-    <h6>AddProduct</h6>
-    </>
+<h1 className='text-center'>Add Your Products</h1>  
+  </>
   )
 }
 

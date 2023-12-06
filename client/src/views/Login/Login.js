@@ -13,13 +13,13 @@ function Login() {
       useEffect(()=>{
         const store = JSON.parse(localStorage.getItem("user" || "{}"));
         if(store?.name){
-            alert(" you already login");
+            alert("You already login");
             window.location.href="/"
         }
        },[])
 
     const Login =async()=>{
-      const response = await axios.post('/login' ,{
+      const response = await axios.post('/api/v1/logins' ,{
         email:email,
         password:password
       });

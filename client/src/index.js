@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import Home from "./views/Home/Home"
-import Services from './views/Services/Services';
+import ShowProduct from './views/ShowProduct/ShowProduct';
 import About from "./views/About/About";
 import AddProduct from "./views/AddProduct/AddProduct"
 import Signup from "./views/Signup/Signup";
@@ -25,8 +25,8 @@ const router = createBrowserRouter([{
   element :<AddProduct/> 
 },
 {
-  path: '/services',
-  element: <Services/>
+  path: '/showproduct',
+  element :<ShowProduct/> 
 },
 {
   path: '/signup',
