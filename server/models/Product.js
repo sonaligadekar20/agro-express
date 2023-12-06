@@ -2,15 +2,26 @@
 import {Schema, model} from "mongoose"
 
 const productSchema = new Schema({
-farmer: {
+user: {
     type: Schema.Types.ObjectId,
-    ref: 'Farmer',
+    ref: 'User',
   },
+
   productName: {
     type: String,
     required: true,
-   
   },
+
+  price: {
+    type: Number,
+    required: true,
+  },
+  
+  quantity: {
+    type: Number,
+    required: true,
+  },  
+
   description: {
     type: String,
     required: true,
