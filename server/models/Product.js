@@ -1,10 +1,10 @@
 // models/product.js
-import {Schema, model} from "mongoose"
+import { Schema, model } from "mongoose";
 
 const productSchema = new Schema({
-user: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
 
   productName: {
@@ -16,18 +16,18 @@ user: {
     type: Number,
     required: true,
   },
-  
+
   quantity: {
     type: Number,
     required: true,
-  },  
+  },
 
   description: {
     type: String,
     required: true,
-  }
+  },
 });
 
-const Product = model('Product', productSchema);
+const Product = model("Product", productSchema);
 
 export default Product;
