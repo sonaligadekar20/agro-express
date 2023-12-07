@@ -25,5 +25,17 @@ const postApiProduct = async (req,res)=>{
       })
   }
 }
+const getApiProductsById = async(req, res)=>{
+    const { id } = req.params;
+  const findUser = await Product.find({ user: id }).populate("user");
 
-export {postApiProduct }
+  findUser.forEach((product) => {
+    product.user.password = undefined;
+  });
+  res.json({
+    success: true,
+    data: findUser,
+    message: "product successfully fetch by user ",
+  });
+}
+export {postApiProduct, getApiProductsById }
