@@ -1,74 +1,85 @@
-import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import { Link } from 'react-router-dom';
-import { useState,useEffect } from 'react';
-import axios from 'axios';
-import "./Login.css"
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./Login.css";
 
 function Login() {
-  const[email ,setEmail]=useState("");
-  const[password ,setPassword]=useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    const store = JSON.parse(localStorage.getItem("user" || "{}"));
+    if (store?.name) {
+      alert("You already login");
+      window.location.href = "/";
+    }
+  }, []);
 
-      useEffect(()=>{
-        const store = JSON.parse(localStorage.getItem("user" || "{}"));
-        if(store?.name){
-            alert("You already login");
-            window.location.href="/"
-        }
-       },[])
+  const loginHere = async () => {
+    const response = await axios.post("/api/v1/logins", {
+      email: email,
+      password: password,
+    });
+    if (response?.data?.success) {
+      alert(response?.data?.message);
+      localStorage.setItem("user", JSON.stringify(response?.data?.data));
+      window.location.href = "/addproduct";
 
-    const Login =async()=>{
-      const response = await axios.post('/api/v1/logins' ,{
-        email:email,
-        password:password
-      });
-        if(response?.data?.success){
-            alert(response?.data?.message)
-            localStorage.setItem("user",JSON.stringify(response?.data?.data));
-            window.location.href="/"
-
-            setEmail("")
-            setPassword("")
-        }else{
-            alert(response?.data?.message) 
-        }
-      console.log(response)
-    };
+      setEmail("");
+      setPassword("");
+    } else {
+      alert(response?.data?.message);
+    }
+    console.log(response);
+  };
 
   return (
     <>
-    <Navbar/>
-   
-         <form className="login-form">
-                <h1 className="text-center"> Login </h1>
-            <div>
-                    {/* <label className="label-field"> Email</label><br/>  */}
-                    <input type="text" placeholder="enter your email" 
-                    value={email} 
-                    onChange={(e)=>{
-                        setEmail(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
-                <div>
-                    {/* <label className="label-field"> password</label><br/> */}
-                    <input type="password" placeholder="enter your current-password" 
-                    value={password} 
-                    onChange={(e)=>{
-                        setPassword(e.target.value)
-                    }}
-                    className="inputfields"
-                    />
-                </div>
+      <div className="mb-20">
+        <Navbar />
+      </div>
 
-                <button type="button" onClick={Login} className="btn"> Login</button>
-
-               <p> <Link to="/signup" className="sign-linka"> Create a new account !</Link></p> 
-            </form>
+      <form className="form-control mx-auto " action="">
+        <p className="title">Login</p>
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="text"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Email
+          </label>
+        </div>
+        <div className="input-field">
+          <input
+            required=""
+            className="input"
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <label className="label" for="input">
+            Enter Password
+          </label>
+        </div>
+        <Link to="/signup" className="no-underline text-blue-600">
+          Create a new account !
+        </Link>
+        <button type="button" className="submit-btn bg-red-600" onClick={loginHere}>
+          Login
+        </button>
+      </form>
     </>
-  )
+  );
 }
 
-export default Login
+export default Login;
