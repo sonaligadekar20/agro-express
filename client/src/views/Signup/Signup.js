@@ -133,7 +133,7 @@ function Signup() {
         <Link to="/login" className="no-underline text-blue-600">
           You have already account Login here !
         </Link>
-        <button className="signup-btn bg-red-600" onClick={signupHere}>
+        <button type="button" className="signup-btn bg-red-600" onClick={signupHere}>
           Signup
         </button>
       </form>
