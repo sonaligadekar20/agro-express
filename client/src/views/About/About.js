@@ -5,7 +5,8 @@ function About() {
   return (
     <div>
       <Navbar/>
-      About</div>
+      {/* <h1 className='text-center mt-4'>About Page</h1> */}
+      </div>
   )
 }
 

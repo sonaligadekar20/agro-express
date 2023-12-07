@@ -1,8 +1,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from "dotenv"
-import Product from './models/Product.js'
-// import User from './models/User.js'
+import path from 'path';
+
 
 dotenv.config();
 
@@ -12,6 +12,8 @@ import {postApiProduct,getApiProductsById} from './controllers/product.js';
 
 const app = express()
 app.use(express.json());
+
+const __dirname = path.resolve();
 
 const connectionDB = () =>{
 
@@ -39,6 +41,13 @@ app.post('/api/v1/products', postApiProduct);
 
 app.get('/api/v1/products/user/:id', getApiProductsById);  //for populate by user
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`)
