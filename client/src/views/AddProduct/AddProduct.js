@@ -24,14 +24,11 @@ function AddProduct() {
       window.location.href = "/showproduct";
     }
     else{
-      alert("Your Product not added successfully");
+      alert(response?.data?.message);
     }
 
   } ;
 
-  useEffect(()=>{
-    addProducts();
-  },[]);
 
   return (
     <>
