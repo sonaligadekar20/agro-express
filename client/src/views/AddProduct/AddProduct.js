@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import axios from "axios"
 
 function AddProduct() {
   const [productName, setProductName] = useState("");
@@ -7,9 +8,25 @@ function AddProduct() {
   const [quantity, setQuantity] = useState("");
   const [description, setDescription] = useState("");
 
-  const addProducts=()=>{
-    
-  
+  const addProducts= async()=>{
+    const user = JSON.parse(localStorage.getItem('user' || "{}"));
+    const response = await axios.post('/api/v1/products',{
+      user:user._id, 
+      productName,
+      price,
+      quantity,
+      description,
+    })
+    console.log(response.data.data);
+
+    if(response?.data?.data){
+      alert("Your Product saved successfully");
+      window.location.href = "/showproduct";
+    }
+    else{
+      alert("Your Product not added successfully");
+    }
+
   } ;
 
   useEffect(()=>{
@@ -78,7 +95,7 @@ function AddProduct() {
         </div>
 
         <button type="button" className="submit-btn bg-red-600"
-        //  onClick={addProducts}
+         onClick={addProducts}
          >
           Add Products
         </button>
