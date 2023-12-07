@@ -2,10 +2,11 @@
 import { Schema, model } from "mongoose";
 
 const supplierSchema = new Schema({
-  products: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: "Product",
+    ref: "User",
   },
+  
   supplierPerson: {
     type: String,
     required: true,

@@ -7,13 +7,14 @@ function AddProduct() {
   const [quantity, setQuantity] = useState("");
   const [description, setDescription] = useState("");
 
-  // const addProducts=()=>{
+  const addProducts=()=>{
+    
   
-  // } ;
+  } ;
 
-  // useEffect(()=>{
-  //   addProducts();
-  // },[]);
+  useEffect(()=>{
+    addProducts();
+  },[]);
 
   return (
     <>
