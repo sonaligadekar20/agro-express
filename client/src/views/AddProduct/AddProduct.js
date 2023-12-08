@@ -29,6 +29,13 @@ function AddProduct() {
 
   } ;
 
+  useEffect(() => {
+    const store = JSON.parse(localStorage.getItem("user" || "{}"));
+    if (!store?.name) {
+      alert("You login first");
+      window.location.href = "/login";
+    }
+  }, []);
 
   return (
     <>

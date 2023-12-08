@@ -32,7 +32,7 @@ function Signup() {
 
       if (response?.data?.success) {
         alert(response?.data?.message);
-        localStorage.setItem("user", JSON.stringify(response?.data?.data));
+        // localStorage.setItem("user", JSON.stringify(response?.data?.data));
         window.location.href = "/login";
       } else {
         alert(response?.data?.message);
