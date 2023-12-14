@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import farImg from "./farmer.jpg";
+import farImg from "./products.png";
 import { Link } from "react-router-dom";
+import Services from "../Services/Services";
 
 function Home() {
   return (
@@ -10,7 +11,11 @@ function Home() {
       <div className="flex flex-wrap justify-evenly mt-4">
         <div>
           {" "}
-          <img src={farImg} className="h-96" />
+          <img
+            src={farImg}
+            className="h-96"
+            style={{ filter: "drop-shadow(1px 1px 2px #000)" }}
+          />
         </div>
         <div className="mt-2 w-full sm:w-full, p-3 lg:w-1/2">
           <h1>
@@ -38,11 +43,16 @@ function Home() {
               purchase fresh fruits and vegetables directly from our growers.
             </p>
 
-<Link to="/addproduct" className="no-underline"><button className="d-block mx-auto mt-4 bg-red-600 py-2 px-10 text-white rounded-lg">Buy your Products</button></Link>
-            
+            <Link to="/addproduct" className="no-underline">
+              <button className="d-block mx-auto mt-4 bg-red-600 py-2 px-10 text-white rounded-lg">
+                Buy your Products
+              </button>
+            </Link>
           </div>
         </div>
       </div>
+      
+      <Services/>
     </>
   );
 }

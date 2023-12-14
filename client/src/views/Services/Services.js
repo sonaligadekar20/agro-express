@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Services() {
   return (
-    <div>Services</div>
-  )
+    <>
+      <h1 className="text-center mt-3">Services</h1>
+    </>
+  );
 }
 
-export default Services
+export default Services;
