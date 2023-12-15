@@ -53,7 +53,7 @@ function Signup() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div className="mb-20">
       </div>
       <div className="flex justify-center    gap-x-[150px] flex-wrap ">

@@ -38,7 +38,7 @@ function Login() {
 
   return (
     <>
-        <Navbar />
+      <Navbar />
       <div className="mb-20">
       </div>
       <div className="flex justify-center    gap-x-20 flex-wrap ">
