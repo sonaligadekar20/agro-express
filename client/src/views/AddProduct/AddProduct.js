@@ -85,11 +85,11 @@ function AddProduct() {
               }}
             >
               <option value="" disabled className="text-red-600">Select Quantity Here</option>
-              <option value="one">50 kg</option>
-              <option value="two">1 Quintal</option>
-              <option value="three">2 Quintal</option>
-              <option value="four">3 Quintal</option>
-              <option value="five">4 Quintal</option>
+              <option value="50Kg">50 Kg</option>
+              <option value="60Kg">60 Kg</option>
+              <option value="1-Quintal">1-Quintal</option>
+              <option value="2-Quintal">2-Quintal</option>
+              <option value="3-Quintal">3-Quintal</option>
             </select>
           </div>
 
