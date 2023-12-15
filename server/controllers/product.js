@@ -93,9 +93,24 @@ const getApiProducts = async (req, res) => {
       success : false,
       message : err.message
     })
-
   }
-
 }
 
-export { postApiProduct, getApiProductsById, putApiTransactionsById, getApiProducts }
+  const getApiAllProducts = async(req,res)=>{
+    try{
+      const products = await Product.find();
+      res.json({
+        success: true,
+        data: products,
+        message: "All Products fetched successfully."
+      });
+    }catch(err){
+      res.json({
+        success: false,
+        message: err.message
+      })
+    }
+  }
+
+
+export { postApiProduct, getApiProductsById, putApiTransactionsById, getApiProducts, getApiAllProducts }
