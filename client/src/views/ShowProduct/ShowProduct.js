@@ -10,7 +10,7 @@ function ShowProduct() {
   const [myProduct, setmyProduct] = useState([]);
   const [userProducts, setUserProducts] = useState([]);
   const [adminUser, setAdminUser] = useState({});
-  const adminRoll = adminUser.role === "admin";
+  const adminRoll = adminUser?.role === "admin";
 
   const userName = user.name;
 
@@ -41,6 +41,7 @@ function ShowProduct() {
       setUser(storageUser);
     } else {
       alert("login first");
+      window.location.href="/login"
     }
   }, []);
 
