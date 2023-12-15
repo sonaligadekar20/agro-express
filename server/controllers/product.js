@@ -1,33 +1,33 @@
 import Product from './../models/Product.js'
 
-const postApiProduct = async (req,res)=>{
-  const {user, productName, price, quantity, description} = req.body;
+const postApiProduct = async (req, res) => {
+  const { user, productName, price, quantity, description } = req.body;
 
-  try{
-      const product = new Product({
-          user,
-          productName,
-          price,
-          quantity,
-          description
-      })
-  
-      const saveProducts = await product.save();
-      res.json({
-          success:true,
-          data:saveProducts,
-          message:"Product added successfully"
-      })
-  }catch(err){
-      res.json({
-          success:false,
-          message:err.message
-      })
+  try {
+    const product = new Product({
+      user,
+      productName,
+      price,
+      quantity,
+      description
+    })
+
+    const saveProducts = await product.save();
+    res.json({
+      success: true,
+      data: saveProducts,
+      message: "Product added successfully"
+    })
+  } catch (err) {
+    res.json({
+      success: false,
+      message: err.message
+    })
   }
 }
 
-const getApiProductsById = async(req, res)=>{
-    const { id } = req.params;
+const getApiProductsById = async (req, res) => {
+  const { id } = req.params;
   const findUser = await Product.find({ user: id }).populate("user");
 
   findUser.forEach((product) => {
@@ -40,34 +40,62 @@ const getApiProductsById = async(req, res)=>{
   });
 }
 
-const putApiTransactionsById = async(req,res)=>{
-  const {id} = req.params;
+const putApiTransactionsById = async (req, res) => {
+  const { id } = req.params;
 
-  const {productName, price, quantity, description} = req.body;
+  const { productName, price, quantity, description } = req.body;
 
-  await Product.updateOne({_id : id},{$set:{
-    productName,
-    price,
-    quantity,
-    description
-  }})
+  await Product.updateOne({ _id: id }, {
+    $set: {
+      productName,
+      price,
+      quantity,
+      description
+    }
+  })
 
-  try{
-    const updateProducts = await Product.findOne({_id : id});
-  
+  try {
+    const updateProducts = await Product.findOne({ _id: id });
+
     res.json({
-      success:true,
-      data : updateProducts,
-      message:'Update Successfully'
+      success: true,
+      data: updateProducts,
+      message: 'Update Successfully'
     })
   }
-  catch(err){
+  catch (err) {
     res.json({
-      success:false,
-      err:err.message
+      success: false,
+      err: err.message
     })
   }
 
 }
 
-export {postApiProduct, getApiProductsById, putApiTransactionsById}
+const getApiProducts = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const findProduct = await Product.findOne({ _id: id });
+    if (!findProduct) {
+      return res.status(400).json({
+         success: false, 
+         message: "Product Not Found." 
+        });    
+    }
+    res.status(200).json({
+      success : true,
+      data :findProduct,
+      message : "Product found successfully."
+    })
+  } catch (err) {
+    res.status(500).json({
+      success : false,
+      message : err.message
+    })
+
+  }
+
+}
+
+export { postApiProduct, getApiProductsById, putApiTransactionsById, getApiProducts }

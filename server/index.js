@@ -8,7 +8,7 @@ dotenv.config();
 
 import {getApiHealths} from './controllers/health.js'
 import {postApiSignups, postApiLogins} from './controllers/user.js';
-import {postApiProduct,getApiProductsById, putApiTransactionsById} from './controllers/product.js';
+import {postApiProduct,getApiProductsById, putApiTransactionsById, getApiProducts} from './controllers/product.js';
 
 const app = express()
 app.use(express.json());
@@ -40,8 +40,11 @@ app.post('/api/v1/products', postApiProduct);
 
 app.get('/api/v1/products/user/:id', getApiProductsById);  //for populate by user
 
-//put - /api/trasactions/:id
+//put - /api/products/:id
 app.put("/api/v1/products/:id", putApiTransactionsById);
+
+//get - /api/v1/products/${id}
+app.get('/api/v1/products/:id', getApiProducts);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
