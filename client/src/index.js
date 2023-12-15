@@ -10,7 +10,8 @@ import About from "./views/About/About";
 import AddProduct from "./views/AddProduct/AddProduct"
 import UpdateProduct from './components/UpdateProduct/UpdateProduct';
 import Signup from "./views/Signup/Signup";
-import Login from "./views/Login/Login"
+import Login from "./views/Login/Login";
+import SaleProduct from './views/SaleProducts/SaleProduct';
 
 const router = createBrowserRouter([{
   path: '/',
@@ -31,6 +32,10 @@ const router = createBrowserRouter([{
 {
   path: '/updateproduct/:id',
   element :<UpdateProduct/>
+},
+{
+  path: '/saleproduct/product/:id',
+  element :<SaleProduct/>
 },
 {
   path: '/signup',
