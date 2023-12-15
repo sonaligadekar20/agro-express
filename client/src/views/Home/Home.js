@@ -3,8 +3,12 @@ import Navbar from "../../components/Navbar/Navbar";
 import farImg from "./products.png";
 import { Link } from "react-router-dom";
 import Services from "../Services/Services";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import data from "./../../utils/data.js"
 
 function Home() {
+ 
+
   return (
     <>
       <Navbar />
@@ -26,12 +30,12 @@ function Home() {
               We are a group of passionate individuals who believe in supporting
               local agriculture and providing fresh produce to our community.
             </p>
-          
+
             <p>
               Our vision is to provide the best quality of fresh produce to our
               community.
             </p>
-      
+
             <p>
               We are a small, local market that offers you the opportunity to
               purchase fresh fruits and vegetables directly from our growers.
@@ -46,19 +50,22 @@ function Home() {
         </div>
       </div>
 
-      <hr className="mx-auto border-black-900 dark:border-black-900 max-w-screen-
-      md:max-w-screen-md lg:max-w-screen-lg:mb-10"/>
-
-
-      <h1 className="text-center">Our Products</h1>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 x
-      l:grid-cols-4">
     
+
+      <h1 className="text-center mb-4 mt-4">Our Products</h1>
+      <div>
+        <div className="product-card-container px-5 flex justify-center gap-x-5 flex-wrap">
+          {data.map((item) => (
+            <ProductCard data={item} />
+          ))}
+        </div>
       </div>
 
-      <hr className="mx-auto border-black-900 dark:border-black-900 max-w-screen-
-      md:max-w-screen-md lg:max-w-screen-lg:mb-10"/>
-      <Services/>
+      <hr
+        className="mx-auto border-black-900 dark:border-black-900 max-w-screen-
+      md:max-w-screen-md lg:max-w-screen-lg:mb-10"
+      />
+      <Services />
     </>
   );
 }

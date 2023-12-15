@@ -38,8 +38,8 @@ function Login() {
 
   return (
     <>
-      <div className="mb-20">
         <Navbar />
+      <div className="mb-20">
       </div>
       <div className="flex justify-center    gap-x-20 flex-wrap ">
         <img

@@ -53,8 +53,8 @@ function Signup() {
 
   return (
     <div>
+      <Navbar />
       <div className="mb-20">
-        <Navbar />
       </div>
       <div className="flex justify-center    gap-x-[150px] flex-wrap ">
         <img
