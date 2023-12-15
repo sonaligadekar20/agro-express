@@ -25,13 +25,13 @@ const supplierSchema = new Schema({
   vehical: {
     type: String,
     required: true,
-    enum: ["truck", "train"],
+    enum: ["truck", "train", "bus"],
   },
 
   vehicalRegNumber: {
     type: String,
     required: true,
-    enum: ["112", "227", "225", "225", "3000", "2929", "247", "657"],
+    enum: ["112", "227", "225", "229", "3000", "2929", "247", "657"],
   },
 
   from: {
