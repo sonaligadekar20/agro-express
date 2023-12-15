@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 import Navbar from "./../../components/Navbar/Navbar";
+import signupPng from "./images/signups.png";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -52,91 +53,108 @@ function Signup() {
 
   return (
     <div>
-      <Navbar />
-      <form className=" form-controls mx-auto  " action="">
-        <p className="title">SignUp</p>
-        <div className="input-field">
-          <input
-            required=""
-            className="input"
-            type="text"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          <label className="label" for="input">
-            Enter Name
-          </label>
-        </div>
+      <div className="mb-20">
+        <Navbar />
+      </div>
+      <div className="flex justify-center    gap-x-[150px] flex-wrap ">
+        <img
+          src={signupPng}
+          alt=""
+          className="h-[460px]"
+          style={{ filter: "drop-shadow(6px 2px 6px #4b1b1b)" }}
+        />
 
-        <div className="input-field">
-          <input
-            required=""
-            className="input"
-            type="text"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-          <label className="label" for="input">
-            Enter Email
-          </label>
-        </div>
+        <div>
+          <form className=" form-controls mx-auto  " action="">
+            <p className="title">SignUp</p>
+            <div className="input-field">
+              <input
+                required=""
+                className="input"
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <label className="label" for="input">
+                Enter Name
+              </label>
+            </div>
 
-        <div className="input-field">
-          <input
-            required=""
-            className="input"
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <label className="label" for="input">
-            Enter Password
-          </label>
-        </div>
+            <div className="input-field">
+              <input
+                required=""
+                className="input"
+                type="text"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <label className="label" for="input">
+                Enter Email
+              </label>
+            </div>
 
-        <div className="input-field">
-          <input
-            required=""
-            className="input"
-            type="number"
-            value={mobile}
-            onChange={(e) => {
-              setMobile(e.target.value);
-            }}
-          />
-          <label className="label" for="input">
-            Enter Mobile
-          </label>
-        </div>
+            <div className="input-field">
+              <input
+                required=""
+                className="input"
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+              <label className="label" for="input">
+                Enter Password
+              </label>
+            </div>
 
-        <div className="input-field">
-          <input
-            required=""
-            className="input"
-            type="text"
-            value={address}
-            onChange={(e) => {
-              setAddress(e.target.value);
-            }}
-          />
-          <label className="label" for="input">
-            Enter Address
-          </label>
-        </div>
+            <div className="input-field">
+              <input
+                required=""
+                className="input"
+                type="number"
+                value={mobile}
+                onChange={(e) => {
+                  setMobile(e.target.value);
+                }}
+              />
+              <label className="label" for="input">
+                Enter Mobile
+              </label>
+            </div>
 
-        <Link to="/login" className="no-underline text-blue-600">
-          You have already account Login here !
-        </Link>
-        <button type="button" className="signup-btn bg-red-600" onClick={signupHere}>
-          Signup
-        </button>
-      </form>
+            <div className="input-field">
+              <input
+                required=""
+                className="input"
+                type="text"
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                }}
+              />
+              <label className="label" for="input">
+                Enter Address
+              </label>
+            </div>
+
+            <Link to="/login" className="no-underline text-blue-600">
+              You have already account Login here !
+            </Link>
+            <button
+              type="button"
+              className="signup-btn bg-red-600"
+              onClick={signupHere}
+            >
+              Signup
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
