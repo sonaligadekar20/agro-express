@@ -25,6 +25,7 @@ const postApiProduct = async (req,res)=>{
       })
   }
 }
+
 const getApiProductsById = async(req, res)=>{
     const { id } = req.params;
   const findUser = await Product.find({ user: id }).populate("user");
@@ -38,4 +39,35 @@ const getApiProductsById = async(req, res)=>{
     message: "product successfully fetch by user ",
   });
 }
-export {postApiProduct, getApiProductsById }
+
+const putApiTransactionsById = async(req,res)=>{
+  const {id} = req.params;
+
+  const {productName, price, quantity, description} = req.body;
+
+  await Product.updateOne({_id : id},{$set:{
+    productName,
+    price,
+    quantity,
+    description
+  }})
+
+  try{
+    const updateProducts = await Product.findOne({_id : id});
+  
+    res.json({
+      success:true,
+      data : updateProducts,
+      message:'Update Successfully'
+    })
+  }
+  catch(err){
+    res.json({
+      success:false,
+      err:err.message
+    })
+  }
+
+}
+
+export {postApiProduct, getApiProductsById, putApiTransactionsById}
