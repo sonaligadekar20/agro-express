@@ -45,7 +45,19 @@ function Home() {
           </div>
         </div>
       </div>
-      
+
+      <hr className="mx-auto border-black-900 dark:border-black-900 max-w-screen-
+      md:max-w-screen-md lg:max-w-screen-lg:mb-10"/>
+
+
+      <h1 className="text-center">Our Products</h1>
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 x
+      l:grid-cols-4">
+    
+      </div>
+
+      <hr className="mx-auto border-black-900 dark:border-black-900 max-w-screen-
+      md:max-w-screen-md lg:max-w-screen-lg:mb-10"/>
       <Services/>
     </>
   );
