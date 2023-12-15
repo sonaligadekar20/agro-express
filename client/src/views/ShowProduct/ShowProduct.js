@@ -80,17 +80,38 @@ function ShowProduct() {
             </h1>
 
             {userProducts.map((product, i) => {
-              const { user: userName, productName, price, quantity, description } = product
+              const { _id, user: userName, productName, price, quantity, description } = product
               return (
                 <div className="p-3" key={i}>
                   <div className="border lg:w-4/6 sm:w-96 mx-auto p-3 px-5 bg-white rounded-md relative" style={{ boxShadow: "2px 2px 5px rgba(0,0,0,0.2)" }}>
-                  <p><b>Farmer ID : </b>{userName}</p>
+                    <p><b>Farmer ID : </b>{userName}</p>
                     <p><b>Product Name :</b>  {productName} <span className="ms-5"><b>Price : ₹ </b>{price}</span>
                       <span className="ms-5 " > <b>Product quantity :</b> {quantity}</span>
                     </p>
                     <hr />
                     <div className="flex justify-between" >
                       <p className="m-0 p-0"><b>Product description :</b>  {description}</p>
+
+                        <button 
+                        type="button" 
+                        className="ms-4 bg-red-600 py-1 px-3 text-white rounded-lg"
+                        onClick={() => {
+                          return swal({
+                            icon: "info",
+                            title: "Are you sure, You want to sale products?",
+                            buttons: ["Cancel", "Yes"],
+                          }).then((userConfirmed) => {
+                            if (userConfirmed) {
+                              window.location.href = `/saleproduct/product/${_id}`;
+                              editProduct(_id);
+                            } else {
+                              swal("Ok No Problem ");
+                            }
+                          });
+                        }}
+                        >Sale Now</button>
+                    
+
                     </div>
                   </div>
                 </div>

@@ -65,7 +65,7 @@ const Navbar = () => {
                   localStorage.removeItem("user");
                   window.location.href = "/login";
                 }}>{" "}
-                <button className="ms-4 bg-red-600 py-1 px-3 text-white rounded-lg">Logout</button>
+                <button type="button" className="ms-4 bg-red-600 py-1 px-3 text-white rounded-lg">Logout</button>
               </span>
             ) : null}
           </div>
