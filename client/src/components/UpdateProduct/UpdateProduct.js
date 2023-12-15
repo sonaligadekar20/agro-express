@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 import axios from "axios"
 import showToast from 'crunchy-toast'
+import { useParams } from "react-router-dom";
 
-function AddProduct() {
+function UpdateProduct() {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [description, setDescription] = useState("");
 
-  const addProducts = async () => {
-    const user = JSON.parse(localStorage.getItem('user' || "{}"));
-    const response = await axios.post('/api/v1/products', {
-      user: user._id,
+  const { id } = useParams();
+
+  const loadProduct = async () => {
+    const response = await axios.get(`/api/v1/products/${id}`);
+
+    const {
       productName,
       price,
       quantity,
-      description,
-    })
-    console.log(response.data.data);
+      description
+    } = response?.data?.data;
 
-    if (response?.data?.data) {
-      alert("Your Product saved successfully");
-      window.location.href = "/showproduct";
-    }
-    else {
-      alert(response?.data?.message);
-    }
+    console.log(response?.data?.data);
 
+    setProductName(productName);
+    setPrice(price);
+    setQuantity(quantity);
+    setDescription(description)
   };
+
+  useEffect(() => {
+    loadProduct();
+  }, []);
 
   useEffect(() => {
     const store = JSON.parse(localStorage.getItem("user" || "{}"));
@@ -38,13 +42,40 @@ function AddProduct() {
     }
   }, []);
 
+  const updateProducts = async () => {
+
+    if (!productName) {
+      showToast("Product Name is required", "alert", 4000);
+      return;
+    }
+    if (!quantity) {
+      showToast("Quantity is required", "alert", 4000);
+      return;
+    }
+
+    const updateProductDetails = {
+      productName: productName,
+      price: price,
+      quantity: quantity,
+      description: description
+
+    };
+
+    const response = await axios.put(`/api/v1/products/${id}`, updateProductDetails);
+
+    if (response?.data?.message) {
+      alert("Your transations have been Updated Successfully.");
+
+      window.location.href = "/showproduct";
+    }
+  }
+
   return (
     <>
       <Navbar />
       <div>
         <form className="form-control mx-auto " action="">
-          <p className="title">Add Your Products</p>
-
+          <p className="title">Update Your Products</p>
           <div className="input-field">
             <input
               required=""
@@ -106,9 +137,9 @@ function AddProduct() {
           </div>
 
           <button type="button" className="submit-btn bg-red-600"
-            onClick={addProducts}
+            onClick={updateProducts}
           >
-            Add Products
+            Update Products
           </button>
         </form>
 
@@ -118,4 +149,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default UpdateProduct;

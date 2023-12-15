@@ -8,6 +8,7 @@ import Home from "./views/Home/Home"
 import ShowProduct from './views/ShowProduct/ShowProduct';
 import About from "./views/About/About";
 import AddProduct from "./views/AddProduct/AddProduct"
+import UpdateProduct from './components/UpdateProduct/UpdateProduct';
 import Signup from "./views/Signup/Signup";
 import Login from "./views/Login/Login"
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([{
 {
   path: '/showproduct',
   element :<ShowProduct/> 
+},
+{
+  path: '/updateproduct/:id',
+  element :<UpdateProduct/>
 },
 {
   path: '/signup',
