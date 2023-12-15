@@ -11,17 +11,17 @@ function Services() {
         <div className="container mt-14">
           <div className="row ">
             <div className="col-md-4">
-              <img src={buyPng} alt="" className=" block mx-auto h-24 p-4 border-1 border-red-500 rounded-2xl hover:shadow-lg" />
-              <p className="text-center mt-2 fw-bold text-red-700">Buy Product</p>
+              <img src={buyPng} alt="" className=" block mx-auto h-24 p-4 border-2 border-red-500 rounded-2xl hover:shadow-lg" />
+              <p className="text-center mt-2 fw-bold text-red-600">Buy Product</p>
             </div>
             <div className="col-md-4">
-              <img src={sellImg} alt="" className=" block mx-auto h-24 p-4 border-1 border-red-500 rounded-2xl hover:shadow-lg" />
-              <p className="text-center mt-2 fw-bold text-red-700">Sell Product</p>
+              <img src={sellImg} alt="" className=" block mx-auto h-24 p-4 border-2 border-red-500 rounded-2xl hover:shadow-lg" />
+              <p className="text-center mt-2 fw-bold text-red-600">Sell Product</p>
 
             </div>
             <div className="col-md-4">
-              <img src={vehicalpng} alt="" className=" block mx-auto h-24 p-4 border-1 border-red-500 rounded-2xl hover:shadow-lg" />
-              <p className="text-center mt-2 fw-bold text-red-700">Transport Product</p>
+              <img src={vehicalpng} alt="" className=" block mx-auto h-24 p-4 border-2 border-red-500 rounded-2xl hover:shadow-lg" />
+              <p className="text-center mt-2 fw-bold text-red-600">Transport Product</p>
 
             </div>
           </div>
