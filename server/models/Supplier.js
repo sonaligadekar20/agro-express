@@ -1,4 +1,3 @@
-// models/supplier.js
 import { Schema, model } from "mongoose";
 
 const supplierSchema = new Schema({
@@ -10,17 +9,20 @@ const supplierSchema = new Schema({
   supplierPerson: {
     type: String,
     required: true,
-    enum: ["JUNED", "NIKITA", "SONALI"],
+    enum: ["Kedar", "Rupesh", "Ramesh", "Jayesh", "Rameshwar"],
   },
+
   contactNumber: {
     type: String,
     required: true,
   },
+
   vehical: {
     type: String,
     required: true,
     enum: ["truck", "train"],
   },
+
   vehicalRegNumber: {
     type: String,
     required: true,
