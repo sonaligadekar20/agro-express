@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import axios from "axios"
-import showToast from 'crunchy-toast'
+import axios from "axios";
+import showToast from "crunchy-toast";
 
 function AddProduct() {
   const [productName, setProductName] = useState("");
@@ -10,24 +10,22 @@ function AddProduct() {
   const [description, setDescription] = useState("");
 
   const addProducts = async () => {
-    const user = JSON.parse(localStorage.getItem('user' || "{}"));
-    const response = await axios.post('/api/v1/products', {
+    const user = JSON.parse(localStorage.getItem("user" || "{}"));
+    const response = await axios.post("/api/v1/products", {
       user: user._id,
       productName,
       price,
       quantity,
       description,
-    })
+    });
     console.log(response.data.data);
 
     if (response?.data?.data) {
       alert("Your Product saved successfully");
       window.location.href = "/showproduct";
-    }
-    else {
+    } else {
       alert(response?.data?.message);
     }
-
   };
 
   useEffect(() => {
@@ -37,16 +35,19 @@ function AddProduct() {
       window.location.href = "/login";
     }
   }, []);
-  useEffect(()=>{
-    const userObj = JSON.parse(localStorage.getItem("user" || "{}"));
-    console.log(userObj)
-    const admin = userObj.roll === "admin"
-    if(!admin){
-      alert("You are Admin You cannot add products or access permissions")
-      window.location.href = "/showproduct";
 
+  useEffect(() => {
+    const userObj = JSON.parse(localStorage.getItem("user") || "{}");
+    console.log(userObj);
+
+    // Assuming the role is stored in userObj.role
+    const isAdmin = userObj.role === "admin";
+
+    if (isAdmin) {
+      alert("You are an admin. You cannot add products or access permissions.");
+      window.location.href = "/showproduct";
     }
-  },[])
+  }, []);
 
   return (
     <>
@@ -94,7 +95,9 @@ function AddProduct() {
                 setQuantity(e.target.value);
               }}
             >
-              <option value="" disabled className="text-red-600">Select Quantity Here</option>
+              <option value="" disabled className="text-red-600">
+                Select Quantity Here
+              </option>
               <option value="50Kg">50 Kg</option>
               <option value="60Kg">60 Kg</option>
               <option value="1-Quintal">1-Quintal</option>
@@ -115,15 +118,15 @@ function AddProduct() {
             ></textarea>
           </div>
 
-          <button type="button" className="submit-btn bg-red-600"
+          <button
+            type="button"
+            className="submit-btn bg-red-600"
             onClick={addProducts}
           >
             Add Products
           </button>
         </form>
-
       </div>
-
     </>
   );
 }
