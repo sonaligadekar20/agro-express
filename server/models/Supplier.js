@@ -1,12 +1,11 @@
 import { Schema, model } from "mongoose";
 
 const supplierSchema = new Schema({
-  role:{
-    type :String ,
-    required: true,
-    default:"user"
+  user:{
+    type:Schema.Types.ObjectId,
+    ref: "User"
   },
-  
+
   product: {
     type: Schema.Types.ObjectId,
     ref: "Product",
