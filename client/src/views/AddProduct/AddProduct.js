@@ -37,6 +37,16 @@ function AddProduct() {
       window.location.href = "/login";
     }
   }, []);
+  useEffect(()=>{
+    const userObj = JSON.parse(localStorage.getItem("user" || "{}"));
+    console.log(userObj)
+    const admin = userObj.roll === "admin"
+    if(!admin){
+      alert("You are Admin You cannot add products or access permissions")
+      window.location.href = "/showproduct";
+
+    }
+  },[])
 
   return (
     <>

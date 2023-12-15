@@ -8,6 +8,8 @@ import swal from 'sweetalert';
 function ShowProduct() {
   const [user, setUser] = useState({});
   const [myProduct, setmyProduct] = useState([]);
+  const [adminUser, setAdminUser] = useState({});
+  const adminRoll = adminUser.role === "admin";
 
   const loadmyProduct = async () => {
     const userId = user._id;
@@ -39,13 +41,28 @@ function ShowProduct() {
     }
   }, []);
 
+  useEffect(()=>{
+    const userObj = JSON.parse(localStorage.getItem("user" || "{}"));
+  setAdminUser(userObj);
+  },[])
+
   return (
     <>
       <Navbar />
       <div>
       </div>
       <div>
-        <h1 className="text-2xl font-semibold text-center my-3 text-red-500">My Products</h1>
+        {console.log(adminRoll)}
+        {adminRoll ? (
+          <h1 className="text-2xl font-semibold text-center my-3 text-red-500">
+            All Farmers Product
+          </h1>
+        ) : (
+          <h1 className="text-2xl font-semibold text-center my-3 text-red-500">
+            {" "}
+            My Products
+          </h1>
+        )}
       </div>
       {
         myProduct.map((product, i) => {
