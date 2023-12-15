@@ -1,15 +1,15 @@
 import { Schema, model } from "mongoose";
 
 const supplierSchema = new Schema({
-  user: {
+  product: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Product",
   },
   
   supplierPerson: {
     type: String,
     required: true,
-    enum: ["Kedar", "Rupesh", "Ramesh", "Jayesh", "Rameshwar"],
+    enum: ["Kedar", "Rupesh", "Ramesh", "Jayesh", "Rameshwar", "Suresh"],
   },
 
   contactNumber: {
@@ -26,7 +26,7 @@ const supplierSchema = new Schema({
   vehicalRegNumber: {
     type: String,
     required: true,
-    enum: ["112", "227", "225", "225"],
+    enum: ["112", "227", "225", "225", "3000", "2929", "247", "657"],
   },
 
   from: {
