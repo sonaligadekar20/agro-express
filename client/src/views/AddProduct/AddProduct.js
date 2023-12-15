@@ -41,7 +41,7 @@ function AddProduct() {
     console.log(userObj);
 
     // Assuming the role is stored in userObj.role
-    const isAdmin = userObj.role === "admin";
+    const isAdmin = userObj?.role === "admin";
 
     if (isAdmin) {
       alert("You are an admin. You cannot add products or access permissions.");
