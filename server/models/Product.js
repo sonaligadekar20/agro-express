@@ -26,6 +26,8 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+},{
+  timestamps: true
 });
 
 const Product = model("Product", productSchema);
