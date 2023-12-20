@@ -1,94 +1,139 @@
-import React from 'react';
-import { Link } from "react-router-dom"
-import './Footer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faGithub, faFacebook, faLinkedin, } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Footer.css";
+import { FaGithub } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa6";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitterSquare } from "react-icons/fa";
+import { IoLocation } from "react-icons/io5";
+import { FaEnvelope } from "react-icons/fa";
+import { FaSquarePhone } from "react-icons/fa6";
 
 function Footer() {
   return (
     <>
+      <footer className="  text-lg-s bg-red-800 text-light  ">
+        <section className="flex justify-content-center justify-content-lg-between p-3 border-bottom">
+          <div className="me-4 d-none d-sm-block">
+            <span>
+              Get connected with <b>AgroExpress</b>
+            </span>
+          </div>
 
-      <footer class="text-center text-lg-start bg-red text-primary p-2 mt-5">
+          <div className="flex">
+            <Link to="" className="me-4 text-reset">
+              <FaFacebook />
+            </Link>
 
-        <section class="">
-          <div class="container text-center text-md-start mt-5 text-light">
+            <Link to="" className="me-4 text-reset">
+              <FaTwitterSquare />
+            </Link>
 
-            <div class="row mt-3">
+            <Link to="" className="me-4 text-reset">
+              <FaSquareInstagram />
+            </Link>
 
-              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <Link to="" className="me-4 text-reset">
+              <FaLinkedin />
+            </Link>
 
-                <p class="text-uppercase fw-bold mb-4 fs-4">
-                  Agro Express
-                </p>
-                <p class="fs-5">
-                Agro-Express is a full-stack project designed to the transportation of agricultural products from farms to the customers.
-                </p>
-              </div>
-
-              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <p class="text-uppercase fw-bold mb-4 fs-4">
-                  Quick Links
-                </p>
-                <p class="fs-fs-5" >
-                  <Link class="text-reset" to={"/"}>Home </Link>
-                </p>
-                <p class="fs-fs-5">
-                  <Link class="text-reset" to={"/about"}>About </Link>
-                </p>
-                <p class="fs-fs-5">
-                  <Link class="text-reset" to={"/addproduct"}>AddProduct </Link>
-                </p>
-                <p class="fs-fs-5">
-                  <Link class="text-reset" to={"/showproduct"}>ShowProduct</Link>
-                </p>
-              </div>
-
-              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <p class="text-uppercase fw-bold mb-4 fs-4">
-                  Useful links
-                </p>
-                <p class="fs-fs-5">
-                  <a href="#!" class="text-reset">Pricing</a>
-                </p>
-                <p class="fs-fs-5">
-                  <a href="#!" class="text-reset">Settings</a>
-                </p>
-                <p class="fs-fs-5">
-                  <a href="#!" class="text-reset">Orders</a>
-                </p>
-                <p class="fs-fs-5">
-                  <a href="#!" class="text-reset">Help</a>
-                </p>
-              </div>
-
-              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-                <p class="text-uppercase fw-bold mb-4 fs-4">Contact</p>
-                <p class="fs-fs-5"> <FontAwesomeIcon icon={faHouse} /> 403, Laxmi Heights, shevalevadi, pune - 412307
-                </p>
-                <p class="fs-fs-5"><FontAwesomeIcon icon={faEnvelope} /> sonaliygadekar@gmail.com</p>
-                <p class="fs-fs-5"><FontAwesomeIcon icon={faPhone} /> + 91 9767973193</p>
-                <p class="fs-5 ">
-                  <a href="https://github.com/sonaligadekar20" target="_blank" class="me-4 text-reset "> <FontAwesomeIcon icon={faGithub} /></a>
-                  <a href="" class="me-4 text-reset"> <FontAwesomeIcon icon={faFacebook} /></a>
-                  <a href="https://www.instagram.com/sonaliygadekar/" target="_blank" class="me-4 text-reset"> <FontAwesomeIcon icon={faInstagram} /></a>
-                  <a href="https://www.linkedin.com/in/sonali-gadekar/" target="_blank" class="me-4 text-reset">  <FontAwesomeIcon icon={faLinkedin} /></a>
-                </p>
-
-              </div>
-
-            </div>
+            <Link to="" className="me-4 text-reset">
+              <FaGithub />
+            </Link>
           </div>
         </section>
 
+        <section className="">
+          <div className="container text-md-start mt-5 ">
+            <div className="row mt-3">
+              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <div className="text-white-600 text-xl font-bold flex-grow font-mono cursor-pointer">
+                  <span className="text-4xl border-b-4">Agro</span>Express
+                </div>
+
+                <p className="mt-4">
+                  It's retail shop for daily needs , widely used by people
+                  living in and around
+                </p>
+              </div>
+
+              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+                <p>
+                  <Link to="./../" className="text-reset a">
+                    Fruits
+                  </Link>
+                </p>
+                <p>
+                  <Link to="#!" className="text-reset a">
+                    Flowers
+                  </Link>
+                </p>
+                <p>
+                  <Link to="#!" className="text-reset a">
+                    Leafy Vegetables
+                  </Link>
+                </p>
+                <p>
+                  <Link to="#!" className="text-reset a">
+                    Fruity Vegetables
+                  </Link>
+                </p>
+              </div>
+
+              <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 ms-5">
+                <h6 className="text-uppercase fw-bold mb-4">Useful Links</h6>
+                <p>
+                  <Link to="/" className="text-reset ">
+                    Home
+                  </Link>
+                </p>
+                <p>
+                  <Link to="/about" className="text-reset a ">
+                    About
+                  </Link>
+                </p>
+                <p>
+                  <Link to="/signup" className="text-reset">
+                    Signup
+                  </Link>
+                </p>
+                <p>
+                  <Link to="/login" className="text-reset">
+                    Login
+                  </Link>
+                </p>
+              </div>
+
+              <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
+                <p>
+                  <IoLocation />
+                  Pune, 411001
+                </p>
+                <p>
+                  <FaEnvelope />
+                  agroexpress@gmail.com
+                </p>
+                <p>
+                  <FaSquarePhone /> + 01 234 567 10
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* style="background-color: rgba(0, 0, 0, 0.05);" */}
+        <div className="text-center p-4">
+          Thank You from ❤️
+          <Link className="text-reset fw-bold " to="">
+            {" "}
+            AgroExpress
+          </Link>
+        </div>
       </footer>
     </>
-
-  )
+  );
 }
 
 export default Footer;
-
